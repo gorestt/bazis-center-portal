@@ -1,0 +1,29 @@
+{% extends "dashboard/base.html" %}
+{% block dashboard_content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="h4 mb-0">Пользователи</h2>
+  <a href="{% url 'dashboard:user_create' %}" class="btn btn-primary btn-sm">Новый пользователь</a>
+</div>
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Логин</th>
+      <th>Роль</th>
+      <th>Staff</th>
+      <th>Superuser</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in users %}
+      <tr>
+        <td>{{ u.username }}</td>
+        <td>{{ u.profile.role|default:"-" }}</td>
+        <td>{{ u.is_staff }}</td>
+        <td>{{ u.is_superuser }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="4" class="text-muted text-center">Пользователи не найдены.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

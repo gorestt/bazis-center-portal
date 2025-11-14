@@ -1,0 +1,33 @@
+{% extends "dashboard/base.html" %}
+{% block dashboard_content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="h4 mb-0">Инциденты</h2>
+  <a href="{% url 'dashboard:incident_create' %}" class="btn btn-primary btn-sm">Новый инцидент</a>
+</div>
+<table class="table table-sm table-hover">
+  <thead>
+    <tr>
+      <th>Создан</th>
+      <th>Заголовок</th>
+      <th>Статус</th>
+      <th>Критичность</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in page_obj %}
+      <tr>
+        <td>{{ i.created_at|date:"d.m.Y H:i" }}</td>
+        <td>{{ i.title }}</td>
+        <td>{{ i.get_status_display }}</td>
+        <td>{{ i.get_criticality_display }}</td>
+        <td class="text-end">
+          <a href="{% url 'dashboard:incident_edit' i.id %}" class="btn btn-sm btn-outline-primary">Открыть</a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="5" class="text-muted text-center">Инциденты не зарегистрированы.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

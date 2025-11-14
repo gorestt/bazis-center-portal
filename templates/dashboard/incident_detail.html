@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ incident.title }}</h2>
+<p><strong>Создан:</strong> {{ incident.created_at|date:"d.m.Y H:i" }}</p>
+<p><strong>Воздействие:</strong> {{ incident.impact }}</p>
+<p><strong>Статус:</strong> {{ incident.status }}</p>
+<p><strong>Ответственный:</strong> {{ incident.owner }}</p>
+<p><strong>Описание:</strong><br>{{ incident.description|linebreaks }}</p>
+<a href="{% url 'dashboard:incident_edit' incident.id %}" class="btn btn-primary">Редактировать</a>
+{% endblock %}

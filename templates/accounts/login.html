@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+{% block title %}Вход в панель мониторинга{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="card shadow-sm">
+      <div class="card-header">Вход в систему</div>
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <div class="mb-3">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+          </div>
+          <div class="mb-3">
+            {{ form.password.label_tag }}
+            {{ form.password }}
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Войти</button>
+        </form>
+        <p class="mt-3 small text-muted">
+          Доступны учётные записи:<br>
+          admin / admin123 — администратор<br>
+          manager / manager123 — менеджер<br>
+          client / client123 — клиент
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

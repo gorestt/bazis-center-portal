@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+{% block title %}Создание пользователя{% endblock %}
+{% block content %}
+<h1 class="mb-3">Создание пользователя</h1>
+<form method="post" class="card card-body col-md-6">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Логин</label>
+    {{ form.username }}
+    {% if form.username.errors %}
+      <div class="text-danger small">{{ form.username.errors.0 }}</div>
+    {% endif %}
+  </div>
+  <div class="mb-3">
+    <label class="form-label">E-mail</label>
+    {{ form.email }}
+    {% if form.email.errors %}
+      <div class="text-danger small">{{ form.email.errors.0 }}</div>
+    {% endif %}
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Роль</label>
+    {{ form.role }}
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Пароль</label>
+    {{ form.password1 }}
+    {% if form.password1.errors %}
+      <div class="text-danger small">{{ form.password1.errors.0 }}</div>
+    {% endif %}
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Повторите пароль</label>
+    {{ form.password2 }}
+    {% if form.password2.errors %}
+      <div class="text-danger small">{{ form.password2.errors.0 }}</div>
+    {% endif %}
+  </div>
+  <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+{% endblock %}

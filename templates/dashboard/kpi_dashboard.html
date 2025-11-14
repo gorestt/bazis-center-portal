@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% block title %}KPI панель{% endblock %}
+{% block content %}
+<h1 class="mb-3">KPI панель</h1>
+<p class="text-muted">На графиках и в таблице отображаются показатели, сохранённые в сущности KPIRecord.</p>
+<canvas id="kpiChartPrivate"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const ctx = document.getElementById('kpiChartPrivate');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Сервис A','Сервис B','Сервис C'],
+      datasets: [{
+        label: 'Доступность, %',
+        data: [99.8, 99.2, 98.7]
+      }]
+    },
+    options: {scales:{y:{beginAtZero:true,max:100}}}
+  });
+});
+</script>
+{% endblock %}

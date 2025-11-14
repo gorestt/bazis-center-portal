@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+{% block title %}{% if mode == 'create' %}Новая заявка{% else %}Редактирование заявки{% endif %}{% endblock %}
+{% block content %}
+<h1 class="mb-3">{% if mode == 'create' %}Новая заявка{% else %}Редактирование заявки #{{ order.id }}{% endif %}</h1>
+<form method="post" class="row g-3">
+  {% csrf_token %}
+  <div class="col-12">
+    {{ form.title.label_tag }}{{ form.title }}
+  </div>
+  <div class="col-12">
+    {{ form.description.label_tag }}{{ form.description }}
+  </div>
+  <div class="col-md-4">
+    {{ form.priority.label_tag }}{{ form.priority }}
+  </div>
+  <div class="col-md-4">
+    {{ form.status.label_tag }}{{ form.status }}
+  </div>
+  <div class="col-md-4">
+    {{ form.executor.label_tag }}{{ form.executor }}
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary">Сохранить</button>
+    <a href="{% url 'dashboard:queue_list' %}" class="btn btn-secondary">Отмена</a>
+  </div>
+</form>
+{% endblock %}

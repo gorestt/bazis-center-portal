@@ -1,0 +1,60 @@
+
+{% extends 'base.html' %}
+{% block title %}Панель — сводка{% endblock %}
+{% block content %}
+<h1 class="mb-4">Панель мониторинга</h1>
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card border-primary h-100">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">Активные заявки</h6>
+        <h2 class="card-title">{{ open_orders }}</h2>
+        <p class="card-text small text-muted">Заявки в статусе «Новая» и «В работе».</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-danger h-100">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">Открытые инциденты</h6>
+        <h2 class="card-title">{{ incidents_open }}</h2>
+        <p class="card-text small text-muted">Инциденты, ожидающие завершения.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-success h-100">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">Записей KPI</h6>
+        <h2 class="card-title">{{ kpi_count }}</h2>
+        <p class="card-text small text-muted">Исторические метрики для аналитики.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header">KPI и отчёты</div>
+      <div class="card-body">
+        <a href="{% url 'dashboard:kpi_dashboard' %}" class="btn btn-outline-primary btn-sm">Панель KPI</a>
+        <a href="{% url 'dashboard:reports_panel' %}" class="btn btn-outline-secondary btn-sm">Панель отчётов</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-header">Документация и смены</div>
+      <div class="card-body">
+        <a href="{% url 'dashboard:docs_manage' %}" class="btn btn-outline-primary btn-sm mb-2">Документация</a>
+        <a href="{% url 'dashboard:shifts_list' %}" class="btn btn-outline-secondary btn-sm">График смен</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% if user.is_superuser %}
+  <div class="mt-4">
+    <a href="{% url 'accounts:user_create' %}" class="btn btn-sm btn-outline-dark">Создать пользователя</a>
+  </div>
+{% endif %}
+{% endblock %}

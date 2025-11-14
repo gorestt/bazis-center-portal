@@ -1,0 +1,9 @@
+{% extends "dashboard/base.html" %}
+{% block dashboard_content %}
+<h2 class="h4 mb-3">Создание пользователя</h2>
+<form method="post" class="card card-body">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary">Создать</button>
+</form>
+{% endblock %}

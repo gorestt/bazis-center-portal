@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Отчеты</h2>
+<form method="post" action="{% url 'dashboard:generate_report' %}" class="row g-2 mb-3">
+  {% csrf_token %}
+  <div class="col-md-6">
+    <input type="text" name="title" class="form-control" placeholder="Название отчета">
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-primary" type="submit">Сформировать</button>
+  </div>
+</form>
+<table class="table table-sm table-striped">
+  <thead>
+    <tr><th>Дата</th><th>Отчет</th><th>XLSX</th><th>DOCX</th></tr>
+  </thead>
+  <tbody>
+    {% for r in reports %}
+    <tr>
+      <td>{{ r.created_at|date:"d.m.Y H:i" }}</td>
+      <td>{{ r.title }}</td>
+      <td>{% if r.xlsx_file %}<a href="{{ r.xlsx_file.url }}">Скачать</a>{% else %}-{% endif %}</td>
+      <td>{% if r.docx_file %}<a href="{{ r.docx_file.url }}">Скачать</a>{% else %}-{% endif %}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4" class="text-muted text-center">Отчеты еще не сформированы.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

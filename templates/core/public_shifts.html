@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+{% block title %}График смен{% endblock %}
+{% block content %}
+<h1 class="mb-3">График смен дежурной смены</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Смена</th>
+      <th>Сотрудник</th>
+      <th>Контакт</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for s in shifts %}
+    <tr>
+      <td>{{ s.date }}</td>
+      <td>{{ s.get_shift_display }}</td>
+      <td>{{ s.employee }}</td>
+      <td>{{ s.phone }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4" class="text-center text-muted">Смен пока нет.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

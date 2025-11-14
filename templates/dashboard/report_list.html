@@ -1,0 +1,44 @@
+{% extends "dashboard/base.html" %}
+{% block dashboard_content %}
+<div class="row g-3">
+  <div class="col-md-7">
+    <h2 class="h4 mb-3">Отчеты</h2>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Тип</th>
+          <th>Период</th>
+          <th>Создан</th>
+          <th>Файл</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in reports %}
+          <tr>
+            <td>{{ r.get_report_type_display }}</td>
+            <td>{{ r.period_from|date:"d.m.Y" }}–{{ r.period_to|date:"d.m.Y" }}</td>
+            <td>{{ r.created_at|date:"d.m.Y H:i" }}</td>
+            <td>
+              {% if r.file %}
+                <a href="{% url 'dashboard:report_download' r.id %}">Скачать</a>
+              {% else %}
+                <span class="text-muted">нет файла</span>
+              {% endif %}
+            </td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="4" class="text-muted text-center">Отчеты еще не сформированы.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-5">
+    <h2 class="h5 mb-3">Сформировать отчет</h2>
+    <form method="post" action="{% url 'dashboard:report_generate' %}" class="card card-body">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-primary">Сформировать</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% block title %}Управление документацией{% endblock %}
+{% block content %}
+<h1 class="mb-3">Управление документацией</h1>
+<div class="row">
+  <div class="col-md-5">
+    <h5>Загрузить документ</h5>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-primary">Загрузить</button>
+    </form>
+  </div>
+  <div class="col-md-7">
+    <h5>Список документов</h5>
+    <table class="table table-sm">
+      <thead><tr><th>Название</th><th>Доступ</th><th>Файл</th></tr></thead>
+      <tbody>
+        {% for d in docs %}
+        <tr>
+          <td>{{ d.title }}</td>
+          <td>{{ d.get_access_display }}</td>
+          <td>
+            {% if d.file %}
+              <a href="{{ d.file.url }}">{{ d.file.name|slice:'5:' }}</a>
+            {% else %}
+              <span class="text-muted">Нет файла</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3" class="text-center text-muted">Документы ещё не загружены.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

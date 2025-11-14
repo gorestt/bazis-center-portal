@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Личный кабинет клиента</h2>
+<p>Здравствуйте, {{ request.user.username }}.</p>
+<p class="text-muted">Здесь отображаются ваши заявки и краткая статистика.</p>
+{% endblock %}

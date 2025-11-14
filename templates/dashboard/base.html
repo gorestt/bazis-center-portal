@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-12 mb-3">
+    <h1 class="h3">Внутренняя панель мониторинга</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3 mb-3">
+    <div class="list-group">
+      <a href="{% url 'dashboard:home' %}" class="list-group-item list-group-item-action">Главная</a>
+      <a href="{% url 'dashboard:queue_list' %}" class="list-group-item list-group-item-action">Очередь заявок</a>
+      <a href="{% url 'dashboard:kpi_dashboard' %}" class="list-group-item list-group-item-action">KPI</a>
+      <a href="{% url 'dashboard:incident_list' %}" class="list-group-item list-group-item-action">Инциденты</a>
+      <a href="{% url 'dashboard:shift_list' %}" class="list-group-item list-group-item-action">График смен</a>
+      <a href="{% url 'dashboard:report_list' %}" class="list-group-item list-group-item-action">Отчеты</a>
+      <a href="{% url 'dashboard:docs_manage' %}" class="list-group-item list-group-item-action">Документация</a>
+      <a href="{% url 'dashboard:user_list' %}" class="list-group-item list-group-item-action">Пользователи</a>
+      <a href="{% url 'dashboard:client_home' %}" class="list-group-item list-group-item-action">ЛК клиента</a>
+    </div>
+  </div>
+  <div class="col-md-9">
+    {% block dashboard_content %}{% endblock %}
+  </div>
+</div>
+{% endblock %}

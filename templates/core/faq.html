@@ -1,0 +1,137 @@
+
+{% extends 'base.html' %}
+{% block title %}FAQ{% endblock %}
+{% block content %}
+<h1 class="mb-3">FAQ — ответы на частые вопросы</h1>
+<div class="accordion" id="faqAccordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="h1">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c1">
+        Как подать заявку в службу поддержки?
+      </button>
+    </h2>
+    <div id="c1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+      <div class="accordion-body">
+        Клиент формирует обращение через внутренний портал или по телефону. Менеджер регистрирует заявку в системе, выбирает тип услуги и приоритет обслуживания. После регистрации заявке присваивается номер, по которому можно отслеживать статус выполнения.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="h2">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2">
+        Как узнать текущий статус заявки?
+      </button>
+    </h2>
+    <div id="c2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+      <div class="accordion-body">
+        В личном кабинете клиента отображается список всех заявок с указанием статуса. Доступна фильтрация по номеру, периоду и типу услуги. При изменении статуса возможна отправка уведомлений по электронной почте.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="h3">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c3">
+        Какие приоритеты заявок используются?
+      </button>
+    </h2>
+    <div id="c3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+      <div class="accordion-body">
+        В очереди применяются приоритеты «Низкий», «Средний» и «Высокий». Приоритет определяется влиянием инцидента на бизнес-процессы и количеством затронутых пользователей. Для заявок с высоким приоритетом предусмотрены сокращённые сроки реакции и решения.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="h4">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c4">
+        Как формируются показатели KPI?
+      </button>
+    </h2>
+    <div id="c4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+      <div class="accordion-body">
+        Показатели KPI рассчитываются на основе зарегистрированных заявок и инцидентов. Система учитывает время реакции и решения, долю выполненных в срок обращений, доступность ключевых сервисов и количество повторных обращений по одной и той же причине.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="h5">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c5">
+        Что считается инцидентом в системе мониторинга?
+      </button>
+    </h2>
+    <div id="c5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+      <div class="accordion-body">
+        Инцидентом считается любое отклонение от штатного уровня предоставления услуги: недоступность сервисов, деградация производительности, ошибки при обработке операций. Для каждого инцидента фиксируются время обнаружения, критичность и связанная заявка.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="h6">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c6">
+        Как формируется график смен?
+      </button>
+    </h2>
+    <div id="c6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+      <div class="accordion-body">
+        График смен составляется на основе утверждённого расписания дежурств. В системе хранится информация о дневных и ночных сменах, ответственных специалистах и контактных телефонах. Доступ к расписанию имеет персонал и менеджмент.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="h7">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c7">
+        Где размещаются регламенты и инструкции?
+      </button>
+    </h2>
+    <div id="c7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+      <div class="accordion-body">
+        Регламенты и инструкции публикуются в разделе «Документация». Для части документов доступ открыт всем пользователям, для внутренних инструкций предусмотрено ограничение по ролям и статусу авторизации.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="h8">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c8">
+        Можно ли выгрузить отчёт за нужный период?
+      </button>
+    </h2>
+    <div id="c8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+      <div class="accordion-body">
+        В панели отчётов доступен выбор типа отчёта и периода. После формирования отчёт сохраняется в системе и становится доступен для скачивания в формате файла. Список сформированных отчётов хранится в отдельном разделе.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="h9">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c9">
+        Как организовано разграничение доступа?
+      </button>
+    </h2>
+    <div id="c9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+      <div class="accordion-body">
+        Администратор управляет пользователями и ролями, менеджер работает с очередью заявок, инцидентами, сменами и отчётами, клиент имеет доступ к личному кабинету и публичной информации. Каждая операция проверяется с учётом роли.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="h10">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c10">
+        Как связаться с поддержкой по вопросам работы портала?
+      </button>
+    </h2>
+    <div id="c10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+      <div class="accordion-body">
+        В разделе «Контакты» размещены телефон и адрес электронной почты службы поддержки. В той же форме можно отправить сообщение прямо из портала, указав имя и обратный адрес для ответа.
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

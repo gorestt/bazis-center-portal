@@ -1,0 +1,16 @@
+
+services:
+  - type: web
+    name: bazis-center
+    env: python
+    region: frankfurt
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn project.wsgi"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: project.settings
+      - key: PYTHON_VERSION
+        value: "3.12"
+      - key: SECRET_KEY
+        value: "your-secret-key"
+staticPublishPath: staticfiles

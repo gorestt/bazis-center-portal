@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+{% block title %}Документация и регламенты{% endblock %}
+{% block content %}
+<h1 class="mb-3">Регламенты и документация</h1>
+<ul class="list-group">
+  {% for d in docs %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+      <div class="fw-semibold">{{ d.title }}</div>
+      <div class="text-muted small">{{ d.description }}</div>
+    </div>
+    {% if d.file %}
+      <a class="btn btn-sm btn-outline-secondary" href="{{ d.file.url }}">Скачать</a>
+    {% endif %}
+  </li>
+  {% empty %}
+  <li class="list-group-item text-muted">Документы ещё не загружены.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
